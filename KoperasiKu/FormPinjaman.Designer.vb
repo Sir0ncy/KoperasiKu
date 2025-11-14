@@ -50,6 +50,7 @@ Partial Class FormPinjaman
         Label12 = New Label()
         Label13 = New Label()
         Label14 = New Label()
+        bBack = New Button()
         CType(dgvDaftarPinjam, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -311,11 +312,21 @@ Partial Class FormPinjaman
         Label14.Size = New Size(1100, 2)
         Label14.TabIndex = 28
         ' 
+        ' bBack
+        ' 
+        bBack.Location = New Point(12, 6)
+        bBack.Name = "bBack"
+        bBack.Size = New Size(73, 53)
+        bBack.TabIndex = 29
+        bBack.Text = "< Back"
+        bBack.UseVisualStyleBackColor = True
+        ' 
         ' FormPinjaman
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1102, 673)
+        Controls.Add(bBack)
         Controls.Add(Label14)
         Controls.Add(Label13)
         Controls.Add(Label12)
@@ -379,4 +390,5 @@ Partial Class FormPinjaman
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label14 As Label
+    Friend WithEvents bBack As Button
 End Class

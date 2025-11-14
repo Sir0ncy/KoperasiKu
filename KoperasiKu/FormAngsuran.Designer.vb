@@ -25,12 +25,12 @@ Partial Class FormAngsuran
         Label14 = New Label()
         Label13 = New Label()
         Label11 = New Label()
-        Me.dgvDaftarAngsuran = New DataGridView()
+        dgvDaftarAngsuran = New DataGridView()
         bHapus = New Button()
         bSimpan = New Button()
         cbAnggota = New ComboBox()
-        Me.tbJumlahAngsur = New TextBox()
-        Me.dtAngsur = New DateTimePicker()
+        tbJumlahAngsur = New TextBox()
+        dtAngsur = New DateTimePicker()
         Label6 = New Label()
         Label3 = New Label()
         Label2 = New Label()
@@ -38,7 +38,8 @@ Partial Class FormAngsuran
         tbSisaAngsur = New TextBox()
         Label4 = New Label()
         bClear = New Button()
-        CType(Me.dgvDaftarAngsuran, ComponentModel.ISupportInitialize).BeginInit()
+        bBack = New Button()
+        CType(dgvDaftarAngsuran, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label14
@@ -71,13 +72,13 @@ Partial Class FormAngsuran
         ' 
         ' dgvDaftarAngsuran
         ' 
-        Me.dgvDaftarAngsuran.BackgroundColor = SystemColors.ControlLight
-        Me.dgvDaftarAngsuran.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDaftarAngsuran.Location = New Point(38, 350)
-        Me.dgvDaftarAngsuran.Name = "dgvDaftarAngsuran"
-        Me.dgvDaftarAngsuran.RowHeadersWidth = 51
-        Me.dgvDaftarAngsuran.Size = New Size(1038, 298)
-        Me.dgvDaftarAngsuran.TabIndex = 52
+        dgvDaftarAngsuran.BackgroundColor = SystemColors.ControlLight
+        dgvDaftarAngsuran.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvDaftarAngsuran.Location = New Point(38, 350)
+        dgvDaftarAngsuran.Name = "dgvDaftarAngsuran"
+        dgvDaftarAngsuran.RowHeadersWidth = 51
+        dgvDaftarAngsuran.Size = New Size(1038, 298)
+        dgvDaftarAngsuran.TabIndex = 52
         ' 
         ' bHapus
         ' 
@@ -109,22 +110,22 @@ Partial Class FormAngsuran
         ' 
         ' tbJumlahAngsur
         ' 
-        Me.tbJumlahAngsur.Location = New Point(217, 155)
-        Me.tbJumlahAngsur.Name = "tbJumlahAngsur"
-        Me.tbJumlahAngsur.Size = New Size(398, 27)
-        Me.tbJumlahAngsur.TabIndex = 36
+        tbJumlahAngsur.Location = New Point(217, 155)
+        tbJumlahAngsur.Name = "tbJumlahAngsur"
+        tbJumlahAngsur.Size = New Size(398, 27)
+        tbJumlahAngsur.TabIndex = 36
         ' 
         ' dtAngsur
         ' 
-        Me.dtAngsur.Location = New Point(215, 116)
-        Me.dtAngsur.Name = "dtAngsur"
-        Me.dtAngsur.Size = New Size(264, 27)
-        Me.dtAngsur.TabIndex = 35
+        dtAngsur.Location = New Point(215, 116)
+        dtAngsur.Name = "dtAngsur"
+        dtAngsur.Size = New Size(264, 27)
+        dtAngsur.TabIndex = 35
         ' 
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Font = New Font("Lucida Sans", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label6.Font = New Font("Lucida Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label6.Location = New Point(38, 118)
         Label6.Name = "Label6"
         Label6.Size = New Size(171, 23)
@@ -134,7 +135,7 @@ Partial Class FormAngsuran
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Font = New Font("Lucida Sans", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label3.Font = New Font("Lucida Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.Location = New Point(67, 155)
         Label3.Name = "Label3"
         Label3.Size = New Size(142, 23)
@@ -144,7 +145,7 @@ Partial Class FormAngsuran
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Font = New Font("Lucida Sans", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.Font = New Font("Lucida Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.Location = New Point(49, 78)
         Label2.Name = "Label2"
         Label2.Size = New Size(160, 23)
@@ -171,7 +172,7 @@ Partial Class FormAngsuran
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Font = New Font("Lucida Sans", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label4.Font = New Font("Lucida Sans", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label4.Location = New Point(60, 201)
         Label4.Name = "Label4"
         Label4.Size = New Size(149, 23)
@@ -188,30 +189,40 @@ Partial Class FormAngsuran
         bClear.Text = "Clear"
         bClear.UseVisualStyleBackColor = False
         ' 
+        ' bBack
+        ' 
+        bBack.Location = New Point(12, 7)
+        bBack.Name = "bBack"
+        bBack.Size = New Size(73, 53)
+        bBack.TabIndex = 59
+        bBack.Text = "< Back"
+        bBack.UseVisualStyleBackColor = True
+        ' 
         ' FormAngsuran
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1102, 673)
+        Controls.Add(bBack)
         Controls.Add(tbSisaAngsur)
         Controls.Add(Label4)
         Controls.Add(Label14)
         Controls.Add(Label13)
         Controls.Add(Label11)
-        Controls.Add(Me.dgvDaftarAngsuran)
+        Controls.Add(dgvDaftarAngsuran)
         Controls.Add(bClear)
         Controls.Add(bHapus)
         Controls.Add(bSimpan)
         Controls.Add(cbAnggota)
-        Controls.Add(Me.tbJumlahAngsur)
-        Controls.Add(Me.dtAngsur)
+        Controls.Add(tbJumlahAngsur)
+        Controls.Add(dtAngsur)
         Controls.Add(Label6)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Label1)
         Name = "FormAngsuran"
         Text = "FormAngsuran"
-        CType(Me.dgvDaftarAngsuran, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvDaftarAngsuran, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -232,6 +243,7 @@ Partial Class FormAngsuran
     Friend WithEvents tbSisaAngsur As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents bClear As Button
+    Friend WithEvents bBack As Button
 
     'Friend WithEvents Label14 As Label
     'Friend WithEvents Label13 As Label

@@ -38,7 +38,7 @@ Partial Class FormLogin
         ' 
         ' tbUser
         ' 
-        tbUser.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbUser.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbUser.Location = New Point(109, 173)
         tbUser.Margin = New Padding(3, 4, 3, 4)
         tbUser.Name = "tbUser"
@@ -47,7 +47,7 @@ Partial Class FormLogin
         ' 
         ' tbPass
         ' 
-        tbPass.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbPass.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbPass.Location = New Point(109, 225)
         tbPass.Margin = New Padding(3, 4, 3, 4)
         tbPass.Name = "tbPass"
@@ -57,7 +57,7 @@ Partial Class FormLogin
         ' lUser
         ' 
         lUser.AutoSize = True
-        lUser.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lUser.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lUser.Location = New Point(16, 177)
         lUser.Name = "lUser"
         lUser.Size = New Size(80, 17)
@@ -67,7 +67,7 @@ Partial Class FormLogin
         ' lPassword
         ' 
         lPassword.AutoSize = True
-        lPassword.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lPassword.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lPassword.Location = New Point(19, 229)
         lPassword.Name = "lPassword"
         lPassword.Size = New Size(74, 17)
@@ -76,7 +76,7 @@ Partial Class FormLogin
         ' 
         ' bLogin
         ' 
-        bLogin.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        bLogin.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bLogin.Location = New Point(109, 292)
         bLogin.Margin = New Padding(3, 4, 3, 4)
         bLogin.Name = "bLogin"
@@ -87,7 +87,7 @@ Partial Class FormLogin
         ' 
         ' bExit
         ' 
-        bExit.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        bExit.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bExit.Location = New Point(313, 292)
         bExit.Margin = New Padding(3, 4, 3, 4)
         bExit.Name = "bExit"
@@ -126,7 +126,7 @@ Partial Class FormLogin
         ' label2
         ' 
         label2.AutoSize = True
-        label2.Font = New Font("Lucida Sans", 30.0F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        label2.Font = New Font("Lucida Sans", 30F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         label2.Location = New Point(399, 35)
         label2.Name = "label2"
         label2.Size = New Size(322, 56)
@@ -145,7 +145,7 @@ Partial Class FormLogin
         ' 
         ' FormLogin
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.ControlLightLight
         ClientSize = New Size(1102, 673)

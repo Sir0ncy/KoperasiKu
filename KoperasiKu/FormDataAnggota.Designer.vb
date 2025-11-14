@@ -43,6 +43,7 @@ Partial Class FormDataAnggota
         bHapus = New Button()
         bBatal = New Button()
         labelTitle = New Label()
+        bBack = New Button()
         CType(dgvAnggota, ComponentModel.ISupportInitialize).BeginInit()
         CType(bindingSource1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -60,7 +61,7 @@ Partial Class FormDataAnggota
         ' 
         ' tbCari
         ' 
-        tbCari.Font = New Font("Lucida Sans", 9.0F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        tbCari.Font = New Font("Lucida Sans", 9F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         tbCari.Location = New Point(586, 78)
         tbCari.Margin = New Padding(3, 4, 3, 4)
         tbCari.Name = "tbCari"
@@ -70,7 +71,7 @@ Partial Class FormDataAnggota
         ' 
         ' bCari
         ' 
-        bCari.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        bCari.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bCari.Location = New Point(812, 74)
         bCari.Margin = New Padding(3, 4, 3, 4)
         bCari.Name = "bCari"
@@ -81,7 +82,7 @@ Partial Class FormDataAnggota
         ' 
         ' tbNama
         ' 
-        tbNama.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbNama.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbNama.Location = New Point(177, 178)
         tbNama.Margin = New Padding(3, 4, 3, 4)
         tbNama.Name = "tbNama"
@@ -90,7 +91,7 @@ Partial Class FormDataAnggota
         ' 
         ' tbAlamat
         ' 
-        tbAlamat.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbAlamat.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbAlamat.Location = New Point(177, 229)
         tbAlamat.Margin = New Padding(3, 4, 3, 4)
         tbAlamat.Name = "tbAlamat"
@@ -99,7 +100,7 @@ Partial Class FormDataAnggota
         ' 
         ' tbNomor
         ' 
-        tbNomor.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbNomor.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbNomor.Location = New Point(177, 281)
         tbNomor.Margin = New Padding(3, 4, 3, 4)
         tbNomor.Name = "tbNomor"
@@ -108,7 +109,7 @@ Partial Class FormDataAnggota
         ' 
         ' tbSimpanan
         ' 
-        tbSimpanan.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        tbSimpanan.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tbSimpanan.Location = New Point(177, 394)
         tbSimpanan.Margin = New Padding(3, 4, 3, 4)
         tbSimpanan.Name = "tbSimpanan"
@@ -118,7 +119,7 @@ Partial Class FormDataAnggota
         ' lNama
         ' 
         lNama.AutoSize = True
-        lNama.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lNama.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lNama.Location = New Point(105, 178)
         lNama.Name = "lNama"
         lNama.Size = New Size(53, 17)
@@ -128,7 +129,7 @@ Partial Class FormDataAnggota
         ' lAlamat
         ' 
         lAlamat.AutoSize = True
-        lAlamat.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lAlamat.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lAlamat.Location = New Point(96, 229)
         lAlamat.Name = "lAlamat"
         lAlamat.Size = New Size(62, 17)
@@ -138,7 +139,7 @@ Partial Class FormDataAnggota
         ' lNomor
         ' 
         lNomor.AutoSize = True
-        lNomor.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lNomor.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lNomor.Location = New Point(70, 281)
         lNomor.Name = "lNomor"
         lNomor.Size = New Size(88, 17)
@@ -148,7 +149,7 @@ Partial Class FormDataAnggota
         ' lSimpanan
         ' 
         lSimpanan.AutoSize = True
-        lSimpanan.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lSimpanan.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lSimpanan.Location = New Point(36, 394)
         lSimpanan.Name = "lSimpanan"
         lSimpanan.Size = New Size(122, 17)
@@ -157,7 +158,7 @@ Partial Class FormDataAnggota
         ' 
         ' dtTanggal
         ' 
-        dtTanggal.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        dtTanggal.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         dtTanggal.Location = New Point(177, 340)
         dtTanggal.Margin = New Padding(3, 4, 3, 4)
         dtTanggal.Name = "dtTanggal"
@@ -167,7 +168,7 @@ Partial Class FormDataAnggota
         ' lTanggal
         ' 
         lTanggal.AutoSize = True
-        lTanggal.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lTanggal.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lTanggal.Location = New Point(7, 340)
         lTanggal.Name = "lTanggal"
         lTanggal.Size = New Size(151, 17)
@@ -176,7 +177,7 @@ Partial Class FormDataAnggota
         ' 
         ' bTambah
         ' 
-        bTambah.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        bTambah.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bTambah.Location = New Point(41, 472)
         bTambah.Margin = New Padding(3, 4, 3, 4)
         bTambah.Name = "bTambah"
@@ -187,7 +188,7 @@ Partial Class FormDataAnggota
         ' 
         ' bSimpan
         ' 
-        bSimpan.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        bSimpan.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bSimpan.Location = New Point(217, 472)
         bSimpan.Margin = New Padding(3, 4, 3, 4)
         bSimpan.Name = "bSimpan"
@@ -198,7 +199,7 @@ Partial Class FormDataAnggota
         ' 
         ' bEdit
         ' 
-        bEdit.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        bEdit.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bEdit.Location = New Point(390, 472)
         bEdit.Margin = New Padding(3, 4, 3, 4)
         bEdit.Name = "bEdit"
@@ -209,7 +210,7 @@ Partial Class FormDataAnggota
         ' 
         ' bHapus
         ' 
-        bHapus.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        bHapus.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bHapus.Location = New Point(130, 564)
         bHapus.Margin = New Padding(3, 4, 3, 4)
         bHapus.Name = "bHapus"
@@ -220,7 +221,7 @@ Partial Class FormDataAnggota
         ' 
         ' bBatal
         ' 
-        bBatal.Font = New Font("Lucida Sans", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        bBatal.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bBatal.Location = New Point(312, 564)
         bBatal.Margin = New Padding(3, 4, 3, 4)
         bBatal.Name = "bBatal"
@@ -239,11 +240,21 @@ Partial Class FormDataAnggota
         labelTitle.TabIndex = 18
         labelTitle.Text = "DATA ANGGOTA"
         ' 
+        ' bBack
+        ' 
+        bBack.Location = New Point(12, 12)
+        bBack.Name = "bBack"
+        bBack.Size = New Size(73, 53)
+        bBack.TabIndex = 21
+        bBack.Text = "< Back"
+        bBack.UseVisualStyleBackColor = True
+        ' 
         ' FormDataAnggota
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1102, 673)
+        Controls.Add(bBack)
         Controls.Add(bCari)
         Controls.Add(tbCari)
         Controls.Add(labelTitle)
@@ -292,4 +303,5 @@ Partial Class FormDataAnggota
     Friend WithEvents bHapus As Button
     Friend WithEvents bBatal As Button
     Friend WithEvents labelTitle As Label
+    Friend WithEvents bBack As Button
 End Class
