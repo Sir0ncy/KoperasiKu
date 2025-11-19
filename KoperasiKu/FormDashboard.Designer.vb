@@ -36,6 +36,10 @@ Partial Class FormDashboard
         lAnggota = New Label()
         lJumlah = New Label()
         lJenis = New Label()
+        lTotalAnggota = New Label()
+        lTotalSimpanan = New Label()
+        lPinjamanAktif = New Label()
+        lTotalPinjaman = New Label()
         Panel1.SuspendLayout()
         Panel2.SuspendLayout()
         SuspendLayout()
@@ -120,6 +124,10 @@ Partial Class FormDashboard
         ' 
         ' Panel2
         ' 
+        Panel2.Controls.Add(lTotalPinjaman)
+        Panel2.Controls.Add(lPinjamanAktif)
+        Panel2.Controls.Add(lTotalSimpanan)
+        Panel2.Controls.Add(lTotalAnggota)
         Panel2.Controls.Add(Label2)
         Panel2.Controls.Add(lTanggal)
         Panel2.Controls.Add(lAnggota)
@@ -180,6 +188,46 @@ Partial Class FormDashboard
         lJenis.TabIndex = 14
         lJenis.Text = "Total Simpanan:"
         ' 
+        ' lTotalAnggota
+        ' 
+        lTotalAnggota.AutoSize = True
+        lTotalAnggota.Font = New Font("Lucida Sans", 13.8F)
+        lTotalAnggota.Location = New Point(228, 82)
+        lTotalAnggota.Name = "lTotalAnggota"
+        lTotalAnggota.Size = New Size(64, 26)
+        lTotalAnggota.TabIndex = 18
+        lTotalAnggota.Text = "total"
+        ' 
+        ' lTotalSimpanan
+        ' 
+        lTotalSimpanan.AutoSize = True
+        lTotalSimpanan.Font = New Font("Lucida Sans", 13.8F)
+        lTotalSimpanan.Location = New Point(228, 128)
+        lTotalSimpanan.Name = "lTotalSimpanan"
+        lTotalSimpanan.Size = New Size(125, 26)
+        lTotalSimpanan.TabIndex = 19
+        lTotalSimpanan.Text = "simpanan"
+        ' 
+        ' lPinjamanAktif
+        ' 
+        lPinjamanAktif.AutoSize = True
+        lPinjamanAktif.Font = New Font("Lucida Sans", 13.8F)
+        lPinjamanAktif.Location = New Point(228, 172)
+        lPinjamanAktif.Name = "lPinjamanAktif"
+        lPinjamanAktif.Size = New Size(121, 26)
+        lPinjamanAktif.TabIndex = 20
+        lPinjamanAktif.Text = "pinjaman"
+        ' 
+        ' lTotalPinjaman
+        ' 
+        lTotalPinjaman.AutoSize = True
+        lTotalPinjaman.Font = New Font("Lucida Sans", 13.8F)
+        lTotalPinjaman.Location = New Point(228, 217)
+        lTotalPinjaman.Name = "lTotalPinjaman"
+        lTotalPinjaman.Size = New Size(121, 26)
+        lTotalPinjaman.TabIndex = 21
+        lTotalPinjaman.Text = "pinjaman"
+        ' 
         ' FormDashboard
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -212,4 +260,8 @@ Partial Class FormDashboard
     Friend WithEvents lAnggota As Label
     Friend WithEvents lJumlah As Label
     Friend WithEvents lJenis As Label
+    Friend WithEvents lTotalPinjaman As Label
+    Friend WithEvents lPinjamanAktif As Label
+    Friend WithEvents lTotalSimpanan As Label
+    Friend WithEvents lTotalAnggota As Label
 End Class

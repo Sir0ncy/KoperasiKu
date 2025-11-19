@@ -2,23 +2,10 @@
 
 Public Class FormLogin
 
-    Dim Conn As MySqlConnection
+    Dim Conn As MySqlConnection = MySQLCon.conn
     Dim Cmd As MySqlCommand
     Dim Rd As MySqlDataReader
 
-    '=== KONEKSI DATABASE ==='
-    Sub Koneksi()
-        Try
-            Conn = New MySqlConnection("server=localhost;user id=root;password=;database=koperasi")
-            If Conn.State = ConnectionState.Closed Then
-                Conn.Open()
-            End If
-        Catch ex As Exception
-            MsgBox("Koneksi gagal: " & ex.Message)
-        End Try
-    End Sub
-
-    '=== LOGIN BUTTON ==='
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles bLogin.Click
         If txtUsername.Text = "" Or txtPassword.Text = "" Then
             MsgBox("Username dan Password tidak boleh kosong!", MsgBoxStyle.Exclamation)
@@ -26,7 +13,7 @@ Public Class FormLogin
         End If
 
         Try
-            Koneksi()
+            Connect()
 
             Dim query As String =
                 "SELECT * FROM user WHERE username=@username AND password=@password"
@@ -39,13 +26,14 @@ Public Class FormLogin
 
             If Rd.Read() Then
                 MsgBox("Login Berhasil!", MsgBoxStyle.Information)
-
+                Conn.Close()
                 Me.Hide()
-                FormDataAnggota.Show()   ' Buka form utama
+                FormDashboard.Show()
             Else
                 MsgBox("Username atau Password salah!", MsgBoxStyle.Critical)
+                Conn.Close()
             End If
-
+            Conn.Close()
         Catch ex As Exception
             MsgBox("Error login: " & ex.Message)
 
