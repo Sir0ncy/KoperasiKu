@@ -11,7 +11,7 @@ Public Class FormDataSimpanan
     Dim selectedIDSimpanan As Integer
 
     Sub koneksi()
-        conn = New MySqlConnection("server=localhost;userid=root;password='';database=koperasiku")
+        conn = New MySqlConnection("server=localhost;userid=root;password='';database=koperasi")
     End Sub
     Sub tampildata()
         koneksi()
