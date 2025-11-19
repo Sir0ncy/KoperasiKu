@@ -92,6 +92,7 @@ Partial Class FormDataSimpanan
         ' 
         ' cbJnsSimpanan
         ' 
+        cbJnsSimpanan.DropDownStyle = ComboBoxStyle.DropDownList
         cbJnsSimpanan.FlatStyle = FlatStyle.Flat
         cbJnsSimpanan.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbJnsSimpanan.FormattingEnabled = True
@@ -103,10 +104,10 @@ Partial Class FormDataSimpanan
         ' 
         ' cbNmAnggota
         ' 
+        cbNmAnggota.DropDownStyle = ComboBoxStyle.DropDownList
         cbNmAnggota.FlatStyle = FlatStyle.Flat
         cbNmAnggota.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         cbNmAnggota.FormattingEnabled = True
-        cbNmAnggota.Items.AddRange(New Object() {"udin", "jono", "alexander arnoled "})
         cbNmAnggota.Location = New Point(161, 89)
         cbNmAnggota.Name = "cbNmAnggota"
         cbNmAnggota.Size = New Size(335, 25)
@@ -158,16 +159,17 @@ Partial Class FormDataSimpanan
         ' 
         lTotalSimpan.AutoSize = True
         lTotalSimpan.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lTotalSimpan.Location = New Point(177, 550)
+        lTotalSimpan.Location = New Point(167, 550)
         lTotalSimpan.Name = "lTotalSimpan"
-        lTotalSimpan.Size = New Size(0, 17)
+        lTotalSimpan.Size = New Size(23, 17)
         lTotalSimpan.TabIndex = 18
+        lTotalSimpan.Text = "---"
         ' 
         ' lTotalLabel
         ' 
         lTotalLabel.AutoSize = True
         lTotalLabel.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lTotalLabel.Location = New Point(36, 550)
+        lTotalLabel.Location = New Point(15, 550)
         lTotalLabel.Name = "lTotalLabel"
         lTotalLabel.Size = New Size(163, 17)
         lTotalLabel.TabIndex = 17
@@ -175,6 +177,8 @@ Partial Class FormDataSimpanan
         ' 
         ' dgvSimpanan
         ' 
+        dgvSimpanan.AllowUserToResizeColumns = False
+        dgvSimpanan.AllowUserToResizeRows = False
         dgvSimpanan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvSimpanan.Columns.AddRange(New DataGridViewColumn() {colId, colNama, colJenis, colTanggal, colJumlah})
         dgvSimpanan.Location = New Point(46, 307)
