@@ -6,7 +6,7 @@ Public Class FormDataAnggota
     Dim Cmd As MySqlCommand
     Dim Adp As MySqlDataAdapter
     Dim Dt As DataTable
-    Dim selectedID As Integer = -1
+    Dim selectedID = -1
 
     Sub LoadDataAnggota()
         Try

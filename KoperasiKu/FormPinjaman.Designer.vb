@@ -32,7 +32,6 @@ Partial Class FormPinjaman
         tbJumlahPinjaman = New TextBox()
         tbBunga = New TextBox()
         tbLamaCicilan = New TextBox()
-        cbAnggota = New ComboBox()
         Label7 = New Label()
         Label8 = New Label()
         Label9 = New Label()
@@ -42,7 +41,7 @@ Partial Class FormPinjaman
         lblStatus = New Label()
         bHitung = New Button()
         bSimpan = New Button()
-        Button3 = New Button()
+        bEdit = New Button()
         bClear = New Button()
         bHapus = New Button()
         dgvDaftarPinjam = New DataGridView()
@@ -51,6 +50,7 @@ Partial Class FormPinjaman
         Label13 = New Label()
         Label14 = New Label()
         bBack = New Button()
+        tbNamaAnggota = New TextBox()
         CType(dgvDaftarPinjam, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -142,14 +142,6 @@ Partial Class FormPinjaman
         tbLamaCicilan.Size = New Size(59, 27)
         tbLamaCicilan.TabIndex = 10
         ' 
-        ' cbAnggota
-        ' 
-        cbAnggota.FormattingEnabled = True
-        cbAnggota.Location = New Point(217, 83)
-        cbAnggota.Name = "cbAnggota"
-        cbAnggota.Size = New Size(398, 28)
-        cbAnggota.TabIndex = 11
-        ' 
         ' Label7
         ' 
         Label7.AutoSize = True
@@ -235,15 +227,15 @@ Partial Class FormPinjaman
         bSimpan.Text = "Simpan"
         bSimpan.UseVisualStyleBackColor = False
         ' 
-        ' Button3
+        ' bEdit
         ' 
-        Button3.BackColor = Color.Khaki
-        Button3.Location = New Point(379, 331)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(149, 43)
-        Button3.TabIndex = 21
-        Button3.Text = "Edit"
-        Button3.UseVisualStyleBackColor = False
+        bEdit.BackColor = Color.Khaki
+        bEdit.Location = New Point(379, 331)
+        bEdit.Name = "bEdit"
+        bEdit.Size = New Size(149, 43)
+        bEdit.TabIndex = 21
+        bEdit.Text = "Edit"
+        bEdit.UseVisualStyleBackColor = False
         ' 
         ' bClear
         ' 
@@ -321,11 +313,19 @@ Partial Class FormPinjaman
         bBack.Text = "< Back"
         bBack.UseVisualStyleBackColor = True
         ' 
+        ' tbNamaAnggota
+        ' 
+        tbNamaAnggota.Location = New Point(217, 82)
+        tbNamaAnggota.Name = "tbNamaAnggota"
+        tbNamaAnggota.Size = New Size(398, 27)
+        tbNamaAnggota.TabIndex = 30
+        ' 
         ' FormPinjaman
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1102, 673)
+        Controls.Add(tbNamaAnggota)
         Controls.Add(bBack)
         Controls.Add(Label14)
         Controls.Add(Label13)
@@ -334,7 +334,7 @@ Partial Class FormPinjaman
         Controls.Add(dgvDaftarPinjam)
         Controls.Add(bClear)
         Controls.Add(bHapus)
-        Controls.Add(Button3)
+        Controls.Add(bEdit)
         Controls.Add(bSimpan)
         Controls.Add(bHitung)
         Controls.Add(lblStatus)
@@ -344,7 +344,6 @@ Partial Class FormPinjaman
         Controls.Add(Label9)
         Controls.Add(Label8)
         Controls.Add(Label7)
-        Controls.Add(cbAnggota)
         Controls.Add(tbLamaCicilan)
         Controls.Add(tbBunga)
         Controls.Add(tbJumlahPinjaman)
@@ -372,7 +371,6 @@ Partial Class FormPinjaman
     Friend WithEvents tbJumlahPinjaman As TextBox
     Friend WithEvents tbBunga As TextBox
     Friend WithEvents tbLamaCicilan As TextBox
-    Friend WithEvents cbAnggota As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
@@ -382,7 +380,7 @@ Partial Class FormPinjaman
     Friend WithEvents lblStatus As Label
     Friend WithEvents bHitung As Button
     Friend WithEvents bSimpan As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents bEdit As Button
     Friend WithEvents bClear As Button
     Friend WithEvents bHapus As Button
     Friend WithEvents dgvDaftarPinjam As DataGridView
@@ -391,4 +389,5 @@ Partial Class FormPinjaman
     Friend WithEvents Label13 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents bBack As Button
+    Friend WithEvents tbNamaAnggota As TextBox
 End Class
