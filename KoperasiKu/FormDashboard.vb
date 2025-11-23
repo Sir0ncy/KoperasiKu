@@ -23,27 +23,15 @@ Public Class FormDashboard
         Try
             Koneksi()
 
-            ' ============================
-            ' TOTAL ANGGOTA
-            ' ============================
             Cmd = New MySqlCommand("SELECT COUNT(*) FROM anggota", Conn)
             lTotalAnggota.Text = Cmd.ExecuteScalar().ToString()
 
-            ' ============================
-            ' TOTAL SIMPANAN
-            ' ============================
             Cmd = New MySqlCommand("SELECT IFNULL(SUM(jumlah),0) FROM simpanan", Conn)
             lTotalSimpanan.Text = "Rp " & FormatNumber(Cmd.ExecuteScalar(), 0)
 
-            ' ============================
-            ' JUMLAH PINJAMAN AKTIF
-            ' ============================
             Cmd = New MySqlCommand("SELECT COUNT(*) FROM pinjaman WHERE status='aktif'", Conn)
             lPinjamanAktif.Text = Cmd.ExecuteScalar().ToString()
 
-            ' ============================
-            ' TOTAL NOMINAL PINJAMAN AKTIF
-            ' ============================
             Cmd = New MySqlCommand("SELECT IFNULL(SUM(sisa_pinjaman),0) FROM pinjaman WHERE status='aktif'", Conn)
             lTotalPinjaman.Text = "Rp " & FormatNumber(Cmd.ExecuteScalar(), 0)
 
@@ -55,11 +43,6 @@ Public Class FormDashboard
             If Conn IsNot Nothing AndAlso Conn.State = ConnectionState.Open Then Conn.Close()
         End Try
     End Sub
-
-
-    ' =====================
-    ' BUTTON NAVIGATION
-    ' =====================
 
     Private Sub bDataAnggota_Click(sender As Object, e As EventArgs) Handles bDataAnggota.Click
         Dim formDataAnggota = New FormDataAnggota

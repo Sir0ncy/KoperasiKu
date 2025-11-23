@@ -6,7 +6,7 @@ Public Class FormLogin
     Dim Cmd As MySqlCommand
     Dim Rd As MySqlDataReader
 
-    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles bLogin.Click
+    Sub login()
         If txtUsername.Text = "" Or txtPassword.Text = "" Then
             MsgBox("Username dan Password tidak boleh kosong!", MsgBoxStyle.Exclamation)
             Exit Sub
@@ -41,7 +41,14 @@ Public Class FormLogin
             If Rd IsNot Nothing Then Rd.Close()
             If Conn IsNot Nothing AndAlso Conn.State = ConnectionState.Open Then Conn.Close()
         End Try
-
+    End Sub
+    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles bLogin.Click
+        login()
     End Sub
 
+    Private Sub txtPassword_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPassword.KeyPress
+        If e.KeyChar = Chr(13) Then
+            login()
+        End If
+    End Sub
 End Class
