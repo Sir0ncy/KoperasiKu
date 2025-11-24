@@ -1,7 +1,7 @@
 ﻿Imports System.Security.Policy
 Imports MySql.Data.MySqlClient
 Module MySQLCon
-    Dim creds As String = "server=172.19.158.154; database=koperasi; userid=root; password=''"
+    Dim creds As String = "server=localhost; database=koperasi; userid=root; password=''"
     Public conn As New MySqlConnection(creds)
     Public da As MySqlDataAdapter = Nothing
     Public cmd As MySqlCommand = Nothing

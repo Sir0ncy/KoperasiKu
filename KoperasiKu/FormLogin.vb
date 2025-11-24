@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Windows.Forms
 
 Public Class FormLogin
 
@@ -7,41 +8,45 @@ Public Class FormLogin
     Dim Rd As MySqlDataReader
 
     Sub login()
-        If txtUsername.Text = "" Or txtPassword.Text = "" Then
+        If txtUsername.Text.Trim() = "" Or txtPassword.Text.Trim() = "" Then
             MsgBox("Username dan Password tidak boleh kosong!", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
 
         Try
-            Connect()
+            MySQLCon.Connect()
 
             Dim query As String =
                 "SELECT * FROM user WHERE username=@username AND password=@password"
 
             Cmd = New MySqlCommand(query, Conn)
-            Cmd.Parameters.AddWithValue("@username", txtUsername.Text)
-            Cmd.Parameters.AddWithValue("@password", txtPassword.Text)
+            Cmd.Parameters.AddWithValue("@username", txtUsername.Text.Trim())
+            Cmd.Parameters.AddWithValue("@password", txtPassword.Text.Trim())
 
             Rd = Cmd.ExecuteReader()
 
             If Rd.Read() Then
                 MsgBox("Login Berhasil!", MsgBoxStyle.Information)
-                Conn.Close()
+
+
                 Me.Hide()
                 FormDashboard.Show()
             Else
                 MsgBox("Username atau Password salah!", MsgBoxStyle.Critical)
-                Conn.Close()
             End If
-            Conn.Close()
+
+
+
         Catch ex As Exception
             MsgBox("Error login: " & ex.Message)
 
         Finally
-            If Rd IsNot Nothing Then Rd.Close()
+            If Rd IsNot Nothing AndAlso Not Rd.IsClosed Then Rd.Close()
+
             If Conn IsNot Nothing AndAlso Conn.State = ConnectionState.Open Then Conn.Close()
         End Try
     End Sub
+
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles bLogin.Click
         login()
     End Sub
@@ -51,4 +56,19 @@ Public Class FormLogin
             login()
         End If
     End Sub
+
+    Private Sub FormLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        txtUsername.Clear()
+        txtPassword.Clear()
+    End Sub
+
+
+    Private Sub bExit_Click(sender As Object, e As EventArgs) Handles bExit.Click
+
+        If MsgBox("Apakah Anda yakin ingin keluar dari program?", vbYesNo + vbQuestion, "Konfirmasi Keluar") = vbYes Then
+            Application.Exit()
+        End If
+    End Sub
+
 End Class
