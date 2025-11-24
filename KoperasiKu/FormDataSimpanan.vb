@@ -2,65 +2,61 @@
 Imports MySql.Data.MySqlClient
 
 Public Class FormDataSimpanan
-    Dim conn As MySqlConnection
-    Dim da As MySqlDataAdapter
-    Dim dt As DataTable
+    Dim Conn As MySqlConnection = MySQLCon.conn
+    Dim Adp As MySqlDataAdapter
+    Dim Dt As DataTable
     Dim cmd As MySqlCommand
     Dim dr As MySqlDataReader
     Dim ketemu As Boolean
     Dim selectedIDSimpanan As Integer
 
-    Sub koneksi()
-        conn = New MySqlConnection("server=localhost;userid=root;password='';database=koperasi")
-    End Sub
-    Sub tampildata()
-        koneksi()
-        conn.Open()
+    Sub LoadDataAnggota()
+        Connect()
         da = New MySqlDataAdapter("SELECT s.id_simpanan, a.nama, s.jenis_simpanan, s.tanggal_simpan ,s.jumlah
                                     FROM simpanan s
-                                    JOIN anggota a ON s.id_anggota = a.id_anggota", conn)
-        dt = New DataTable
-        da.Fill(dt)
+                                    JOIN anggota a ON s.id_anggota = a.id_anggota", Conn)
+        Dt = New DataTable
+        da.Fill(Dt)
         dgvSimpanan.Rows.Clear()
-        For i = 0 To dt.Rows.Count - 1
-            dgvSimpanan.Rows.Add(dt.Rows(i).Item(0))
-            dgvSimpanan.Rows(i).Cells(1).Value = dt.Rows(i).Item(1)
-            dgvSimpanan.Rows(i).Cells(2).Value = dt.Rows(i).Item(2)
-            dgvSimpanan.Rows(i).Cells(3).Value = dt.Rows(i).Item(3)
-            dgvSimpanan.Rows(i).Cells(4).Value = dt.Rows(i).Item(4)
+        For i = 0 To Dt.Rows.Count - 1
+            dgvSimpanan.Rows.Add(Dt.Rows(i).Item(0))
+            dgvSimpanan.Rows(i).Cells(1).Value = Dt.Rows(i).Item(1)
+            dgvSimpanan.Rows(i).Cells(2).Value = Dt.Rows(i).Item(2)
+            dgvSimpanan.Rows(i).Cells(3).Value = Dt.Rows(i).Item(3)
+            dgvSimpanan.Rows(i).Cells(4).Value = Dt.Rows(i).Item(4)
         Next
-        conn.Close()
+        Conn.Close()
     End Sub
-    Private Sub LoadAnggota()
+    Private Sub SearchAnggota()
         Try
-            koneksi()
-            conn.Open()
+            Connect()
 
-            Dim cmd As New MySqlCommand("SELECT id_anggota, nama FROM anggota", conn)
+            Dim cmd As New MySqlCommand("SELECT id_anggota, nama FROM anggota WHERE nama LIKE @nama LIMIT 1", Conn)
             Dim dt As New DataTable
-            dt.Load(cmd.ExecuteReader())
+            cmd.Parameters.AddWithValue("@nama", "%" & tbNamaAnggota.Text & "%")
 
-            cbNmAnggota.DataSource = dt
-            cbNmAnggota.DisplayMember = "nama"
-            cbNmAnggota.ValueMember = "id_anggota"
-            cbNmAnggota.SelectedIndex = -1
+            Dim rd = cmd.ExecuteReader()
 
-            conn.Close()
-
+            If rd.Read Then
+                tbNamaAnggota.Text = rd("nama")
+            Else
+                MessageBox.Show("Nama anggota tidak ditemukan!")
+            End If
+            rd.Close()
+            Conn.Close()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
-            conn.Close()
+            Conn.Close()
         End Try
     End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        tampildata()
-        LoadAnggota()
+        LoadDataAnggota()
         HitungTotalSimpanan()
     End Sub
     Private Sub bSimpan_Click(sender As Object, e As EventArgs) Handles bSimpan.Click
         Try
-            If cbNmAnggota.SelectedIndex = -1 Then
-                MessageBox.Show("Pilih nama anggota dulu!")
+            If tbNamaAnggota.Text = "" Then
+                MessageBox.Show("Cari nama anggota dulu!")
                 Exit Sub
             End If
 
@@ -74,15 +70,14 @@ Public Class FormDataSimpanan
                 Exit Sub
             End If
 
-            koneksi()
-            conn.Open()
+            Connect()
 
             Dim query As String = "INSERT INTO simpanan (id_anggota, tanggal_simpan, jenis_simpanan, jumlah) " &
                                   "VALUES (@id_anggota, @tanggal, @jenis, @jumlah)"
 
-            Dim cmd As New MySqlCommand(query, conn)
+            Dim cmd As New MySqlCommand(query, Conn)
 
-            cmd.Parameters.AddWithValue("@id_anggota", cbNmAnggota.SelectedValue)
+            cmd.Parameters.AddWithValue("@id_anggota", tbNamaAnggota.Text)
             cmd.Parameters.AddWithValue("@tanggal", dtTanggal.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@jenis", cbJnsSimpanan.Text)
             cmd.Parameters.AddWithValue("@jumlah", Decimal.Parse(tbSimpanan.Text))
@@ -91,39 +86,25 @@ Public Class FormDataSimpanan
 
             MessageBox.Show("Data simpanan berhasil ditambahkan!")
 
-            conn.Close()
+            Conn.Close()
 
-            tampildata()
+            LoadDataAnggota()
             HitungTotalSimpanan()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
-            conn.Close()
+            Conn.Close()
         End Try
-    End Sub
-
-    Private Sub dgvSimpanan_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSimpanan.CellDoubleClick
-        If e.RowIndex >= 0 Then
-            Dim row As DataGridViewRow = dgvSimpanan.Rows(e.RowIndex)
-
-            selectedIDSimpanan = CInt(row.Cells(0).Value)
-
-            cbNmAnggota.Text = row.Cells(1).Value.ToString()
-            cbJnsSimpanan.Text = row.Cells(2).Value.ToString()
-            dtTanggal.Value = DateTime.Parse(row.Cells(3).Value.ToString())
-            tbSimpanan.Text = row.Cells(4).Value.ToString()
-        End If
     End Sub
 
     Private Sub bEdit_Click(sender As Object, e As EventArgs) Handles bEdit.Click
         Try
             If selectedIDSimpanan = 0 Then
-                MessageBox.Show("Pilih data dulu dengan double-click!")
+                MessageBox.Show("Pilih data dulu di list!")
                 Exit Sub
             End If
 
-            koneksi()
-            conn.Open()
+            Connect()
 
             Dim updateQuery As String =
             "UPDATE simpanan SET 
@@ -133,39 +114,39 @@ Public Class FormDataSimpanan
             jumlah = @jumlah
             WHERE id_simpanan = @id"
 
-            Dim cmd As New MySqlCommand(updateQuery, conn)
+            Dim cmd As New MySqlCommand(updateQuery, Conn)
 
             cmd.Parameters.AddWithValue("@id", selectedIDSimpanan)
-            cmd.Parameters.AddWithValue("@id_anggota", cbNmAnggota.SelectedValue)
+            cmd.Parameters.AddWithValue("@id_anggota", tbNamaAnggota.Text)
             cmd.Parameters.AddWithValue("@tanggal", dtTanggal.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@jenis", cbJnsSimpanan.Text)
             cmd.Parameters.AddWithValue("@jumlah", Decimal.Parse(tbSimpanan.Text))
 
             cmd.ExecuteNonQuery()
-            conn.Close()
+            Conn.Close()
 
             MessageBox.Show("Data berhasil diperbarui!")
 
-            tampildata()
+            LoadDataAnggota()
             HitungTotalSimpanan()
 
             selectedIDSimpanan = 0
 
             selectedIDSimpanan = 0
-            cbNmAnggota.SelectedIndex = -1
+            tbNamaAnggota.Clear()
             cbJnsSimpanan.SelectedIndex = -1
             tbSimpanan.Clear()
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
-            conn.Close()
+            Conn.Close()
         End Try
     End Sub
 
     Private Sub bHapus_Click(sender As Object, e As EventArgs) Handles bHapus.Click
         Try
             If selectedIDSimpanan = 0 Then
-                MessageBox.Show("Pilih data yang ingin dihapus dengan double-click!")
+                MessageBox.Show("Pilih data yang ingin dihapus di list!")
                 Exit Sub
             End If
 
@@ -180,26 +161,25 @@ Public Class FormDataSimpanan
                 Exit Sub
             End If
 
-            koneksi()
-            conn.Open()
+            Connect()
 
             Dim deleteQuery As String = "DELETE FROM simpanan WHERE id_simpanan = @id"
 
-            Dim cmd As New MySqlCommand(deleteQuery, conn)
+            Dim cmd As New MySqlCommand(deleteQuery, Conn)
             cmd.Parameters.AddWithValue("@id", selectedIDSimpanan)
 
             cmd.ExecuteNonQuery()
-            conn.Close()
+            Conn.Close()
 
             MessageBox.Show("Data berhasil dihapus!")
 
-            tampildata()
+            LoadDataAnggota()
             HitungTotalSimpanan()
 
             selectedIDSimpanan = 0
 
             selectedIDSimpanan = 0
-            cbNmAnggota.SelectedIndex = -1
+            tbNamaAnggota.Clear()
             cbJnsSimpanan.SelectedIndex = -1
             tbSimpanan.Clear()
 
@@ -211,14 +191,13 @@ Public Class FormDataSimpanan
 
     Private Sub bBatal_Click(sender As Object, e As EventArgs) Handles bBatal.Click
         selectedIDSimpanan = 0
-        cbNmAnggota.SelectedIndex = -1
+        tbNamaAnggota.Clear()
         cbJnsSimpanan.SelectedIndex = -1
         tbSimpanan.Clear()
     End Sub
     Private Sub HitungTotalSimpanan()
         Try
-            koneksi()
-            conn.Open()
+            Connect()
 
             Dim cmd As New MySqlCommand("SELECT SUM(jumlah) FROM simpanan", conn)
             Dim hasil = cmd.ExecuteScalar()
@@ -240,5 +219,28 @@ Public Class FormDataSimpanan
         Dim formDashboard = New FormDashboard
         Me.Hide()
         formDashboard.Show()
+    End Sub
+
+    Private Sub dgvSimpanan_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSimpanan.CellClick
+        If e.RowIndex >= 0 Then
+            Dim row As DataGridViewRow = dgvSimpanan.Rows(e.RowIndex)
+
+            selectedIDSimpanan = CInt(row.Cells(0).Value)
+
+            tbNamaAnggota.Text = row.Cells(1).Value.ToString()
+            cbJnsSimpanan.Text = row.Cells(2).Value.ToString()
+            dtTanggal.Value = DateTime.Parse(row.Cells(3).Value.ToString())
+            tbSimpanan.Text = row.Cells(4).Value.ToString()
+        End If
+    End Sub
+
+    Private Sub tbNamaAnggota_TextChanged(sender As Object, e As EventArgs) Handles tbNamaAnggota.TextChanged
+
+    End Sub
+
+    Private Sub tbNamaAnggota_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNamaAnggota.KeyPress
+        If e.KeyChar = Chr(13) Then
+            SearchAnggota()
+        End If
     End Sub
 End Class

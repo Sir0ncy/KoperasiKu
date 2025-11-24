@@ -107,7 +107,7 @@ Public Class FormPinjaman
             Connect()
 
             Dim query As String =
-                "SELECT id_anggota FROM anggota WHERE nama LIKE @nama LIMIT 1"
+                "SELECT id_anggota, nama FROM anggota WHERE nama LIKE @nama LIMIT 1"
 
             Cmd = New MySqlCommand(query, Conn)
             Cmd.Parameters.AddWithValue("@nama", "%" & tbNamaAnggota.Text & "%")
@@ -118,6 +118,7 @@ Public Class FormPinjaman
                 selectedAnggotaID = rd("id_anggota")
                 lblStatus.Text = "Anggota ditemukan"
                 lblStatus.ForeColor = Color.LightGreen
+                tbNamaAnggota.Text = rd("nama")
             Else
                 lblStatus.Text = "Tidak ditemukan"
                 lblStatus.ForeColor = Color.Red

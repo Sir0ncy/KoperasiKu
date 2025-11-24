@@ -27,10 +27,10 @@ Partial Class FormDataSimpanan
         lTanggal = New Label()
         lJumlah = New Label()
         cbJnsSimpanan = New ComboBox()
-        cbNmAnggota = New ComboBox()
         dtTanggal = New DateTimePicker()
-        tbSimpanan = New TextBox()
         panelMain = New Panel()
+        tbSimpanan = New TextBox()
+        tbNamaAnggota = New TextBox()
         lTotalSimpan = New Label()
         lTotalLabel = New Label()
         dgvSimpanan = New DataGridView()
@@ -54,7 +54,7 @@ Partial Class FormDataSimpanan
         ' 
         lAnggota.AutoSize = True
         lAnggota.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lAnggota.Location = New Point(35, 92)
+        lAnggota.Location = New Point(36, 93)
         lAnggota.Name = "lAnggota"
         lAnggota.Size = New Size(119, 17)
         lAnggota.TabIndex = 0
@@ -64,7 +64,7 @@ Partial Class FormDataSimpanan
         ' 
         lJenis.AutoSize = True
         lJenis.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lJenis.Location = New Point(36, 130)
+        lJenis.Location = New Point(33, 131)
         lJenis.Name = "lJenis"
         lJenis.Size = New Size(122, 17)
         lJenis.TabIndex = 1
@@ -74,7 +74,7 @@ Partial Class FormDataSimpanan
         ' 
         lTanggal.AutoSize = True
         lTanggal.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lTanggal.Location = New Point(15, 168)
+        lTanggal.Location = New Point(11, 169)
         lTanggal.Name = "lTanggal"
         lTanggal.Size = New Size(144, 17)
         lTanggal.TabIndex = 2
@@ -84,7 +84,7 @@ Partial Class FormDataSimpanan
         ' 
         lJumlah.AutoSize = True
         lJumlah.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        lJumlah.Location = New Point(21, 206)
+        lJumlah.Location = New Point(19, 212)
         lJumlah.Name = "lJumlah"
         lJumlah.Size = New Size(136, 17)
         lJumlah.TabIndex = 3
@@ -102,37 +102,19 @@ Partial Class FormDataSimpanan
         cbJnsSimpanan.Size = New Size(335, 25)
         cbJnsSimpanan.TabIndex = 6
         ' 
-        ' cbNmAnggota
-        ' 
-        cbNmAnggota.DropDownStyle = ComboBoxStyle.DropDownList
-        cbNmAnggota.FlatStyle = FlatStyle.Flat
-        cbNmAnggota.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        cbNmAnggota.FormattingEnabled = True
-        cbNmAnggota.Location = New Point(161, 89)
-        cbNmAnggota.Name = "cbNmAnggota"
-        cbNmAnggota.Size = New Size(335, 25)
-        cbNmAnggota.TabIndex = 7
-        ' 
         ' dtTanggal
         ' 
         dtTanggal.Cursor = Cursors.Hand
         dtTanggal.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         dtTanggal.Location = New Point(161, 166)
         dtTanggal.Name = "dtTanggal"
-        dtTanggal.Size = New Size(250, 25)
+        dtTanggal.Size = New Size(276, 25)
         dtTanggal.TabIndex = 8
-        ' 
-        ' tbSimpanan
-        ' 
-        tbSimpanan.BorderStyle = BorderStyle.None
-        tbSimpanan.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        tbSimpanan.Location = New Point(161, 208)
-        tbSimpanan.Name = "tbSimpanan"
-        tbSimpanan.Size = New Size(335, 18)
-        tbSimpanan.TabIndex = 9
         ' 
         ' panelMain
         ' 
+        panelMain.Controls.Add(tbSimpanan)
+        panelMain.Controls.Add(tbNamaAnggota)
         panelMain.Controls.Add(lTotalSimpan)
         panelMain.Controls.Add(lTotalLabel)
         panelMain.Controls.Add(dgvSimpanan)
@@ -143,17 +125,29 @@ Partial Class FormDataSimpanan
         panelMain.Controls.Add(bSimpan)
         panelMain.Controls.Add(lTitle)
         panelMain.Controls.Add(lTanggal)
-        panelMain.Controls.Add(tbSimpanan)
         panelMain.Controls.Add(lAnggota)
         panelMain.Controls.Add(dtTanggal)
         panelMain.Controls.Add(lJenis)
-        panelMain.Controls.Add(cbNmAnggota)
         panelMain.Controls.Add(lJumlah)
         panelMain.Controls.Add(cbJnsSimpanan)
         panelMain.Location = New Point(91, 36)
         panelMain.Name = "panelMain"
         panelMain.Size = New Size(920, 600)
         panelMain.TabIndex = 10
+        ' 
+        ' tbSimpanan
+        ' 
+        tbSimpanan.Location = New Point(160, 206)
+        tbSimpanan.Name = "tbSimpanan"
+        tbSimpanan.Size = New Size(336, 27)
+        tbSimpanan.TabIndex = 20
+        ' 
+        ' tbNamaAnggota
+        ' 
+        tbNamaAnggota.Location = New Point(160, 87)
+        tbNamaAnggota.Name = "tbNamaAnggota"
+        tbNamaAnggota.Size = New Size(336, 27)
+        tbNamaAnggota.TabIndex = 19
         ' 
         ' lTotalSimpan
         ' 
@@ -248,9 +242,9 @@ Partial Class FormDataSimpanan
         bBatal.FlatAppearance.MouseOverBackColor = Color.White
         bBatal.FlatStyle = FlatStyle.Flat
         bBatal.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        bBatal.Location = New Point(558, 203)
+        bBatal.Location = New Point(558, 150)
         bBatal.Name = "bBatal"
-        bBatal.Size = New Size(94, 29)
+        bBatal.Size = New Size(108, 47)
         bBatal.TabIndex = 14
         bBatal.Text = "Batal"
         bBatal.UseVisualStyleBackColor = False
@@ -265,9 +259,9 @@ Partial Class FormDataSimpanan
         bHapus.FlatAppearance.MouseOverBackColor = Color.White
         bHapus.FlatStyle = FlatStyle.Flat
         bHapus.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        bHapus.Location = New Point(786, 150)
+        bHapus.Location = New Point(672, 92)
         bHapus.Name = "bHapus"
-        bHapus.Size = New Size(94, 29)
+        bHapus.Size = New Size(108, 47)
         bHapus.TabIndex = 13
         bHapus.Text = "Hapus"
         bHapus.UseVisualStyleBackColor = False
@@ -284,7 +278,7 @@ Partial Class FormDataSimpanan
         bEdit.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bEdit.Location = New Point(672, 150)
         bEdit.Name = "bEdit"
-        bEdit.Size = New Size(94, 29)
+        bEdit.Size = New Size(108, 47)
         bEdit.TabIndex = 12
         bEdit.Text = "Edit"
         bEdit.UseVisualStyleBackColor = False
@@ -299,9 +293,9 @@ Partial Class FormDataSimpanan
         bSimpan.FlatAppearance.MouseOverBackColor = Color.White
         bSimpan.FlatStyle = FlatStyle.Flat
         bSimpan.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        bSimpan.Location = New Point(558, 150)
+        bSimpan.Location = New Point(558, 92)
         bSimpan.Name = "bSimpan"
-        bSimpan.Size = New Size(94, 29)
+        bSimpan.Size = New Size(108, 47)
         bSimpan.TabIndex = 11
         bSimpan.Text = "Simpan"
         bSimpan.UseVisualStyleBackColor = False
@@ -345,9 +339,7 @@ Partial Class FormDataSimpanan
     Friend WithEvents lTanggal As Label
     Friend WithEvents lJumlah As Label
     Friend WithEvents cbJnsSimpanan As ComboBox
-    Friend WithEvents cbNmAnggota As ComboBox
     Friend WithEvents dtTanggal As DateTimePicker
-    Friend WithEvents tbSimpanan As TextBox
     Friend WithEvents panelMain As Panel
     Friend WithEvents lTitle As Label
     Friend WithEvents bBatal As Button
@@ -364,4 +356,6 @@ Partial Class FormDataSimpanan
     Friend WithEvents colTanggal As DataGridViewTextBoxColumn
     Friend WithEvents colJumlah As DataGridViewTextBoxColumn
     Friend WithEvents bBack As Button
+    Friend WithEvents tbSimpanan As TextBox
+    Friend WithEvents tbNamaAnggota As TextBox
 End Class

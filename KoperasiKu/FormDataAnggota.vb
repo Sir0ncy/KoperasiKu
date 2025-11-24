@@ -44,7 +44,7 @@ Public Class FormDataAnggota
                 Decimal.TryParse(Convert.ToString(row("simpanan_awal")), simpananValue)
 
                 dgvAnggota.Rows.Add(
-                        row("id_anggota"),
+                    row("id_anggota"),
                     Convert.ToString(row("nama")),
                     Convert.ToString(row("alamat")),
                     Convert.ToString(row("no_hp")),
