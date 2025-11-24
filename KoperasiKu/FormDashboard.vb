@@ -2,18 +2,9 @@
 
 Public Class FormDashboard
 
-    Dim Conn As MySqlConnection
+    Dim Conn As MySqlConnection = MySQLCon.conn
     Dim Cmd As MySqlCommand
     Dim Rd As MySqlDataReader
-
-    Sub Koneksi()
-        Try
-            MySQLCon.Connect()
-            Conn = MySQLCon.conn
-        Catch ex As Exception
-            MsgBox("Koneksi gagal: " & ex.Message)
-        End Try
-    End Sub
 
     Private Sub FormDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadDashboard()
@@ -21,26 +12,28 @@ Public Class FormDashboard
 
     Private Sub LoadDashboard()
         Try
-            Koneksi()
+            Using Conn As New MySqlConnection("server=172.19.158.154; database=koperasi; userid=root; password=''")
+                Conn.Open()
 
-            Cmd = New MySqlCommand("SELECT COUNT(*) FROM anggota", Conn)
-            lTotalAnggota.Text = Cmd.ExecuteScalar().ToString()
+                Using Cmd As New MySqlCommand("SELECT COUNT(*) FROM anggota", Conn)
+                    lTotalAnggota.Text = Cmd.ExecuteScalar().ToString()
+                End Using
 
-            Cmd = New MySqlCommand("SELECT IFNULL(SUM(jumlah),0) FROM simpanan", Conn)
-            lTotalSimpanan.Text = "Rp " & FormatNumber(Cmd.ExecuteScalar(), 0)
+                Using Cmd As New MySqlCommand("SELECT IFNULL(SUM(jumlah),0) FROM simpanan", Conn)
+                    lTotalSimpanan.Text = "Rp " & FormatNumber(Cmd.ExecuteScalar(), 0)
+                End Using
 
-            Cmd = New MySqlCommand("SELECT COUNT(*) FROM pinjaman WHERE status='aktif'", Conn)
-            lPinjamanAktif.Text = Cmd.ExecuteScalar().ToString()
+                Using Cmd As New MySqlCommand("SELECT COUNT(*) FROM pinjaman WHERE status='aktif'", Conn)
+                    lPinjamanAktif.Text = Cmd.ExecuteScalar().ToString()
+                End Using
 
-            Cmd = New MySqlCommand("SELECT IFNULL(SUM(sisa_pinjaman),0) FROM pinjaman WHERE status='aktif'", Conn)
-            lTotalPinjaman.Text = "Rp " & FormatNumber(Cmd.ExecuteScalar(), 0)
+                Using Cmd As New MySqlCommand("SELECT IFNULL(SUM(sisa_pinjaman),0) FROM pinjaman WHERE status='aktif'", Conn)
+                    lTotalPinjaman.Text = "Rp " & FormatNumber(Cmd.ExecuteScalar(), 0)
+                End Using
+            End Using
 
         Catch ex As Exception
             MsgBox("Gagal load data dashboard: " & ex.Message)
-
-        Finally
-            If Rd IsNot Nothing Then Rd.Close()
-            If Conn IsNot Nothing AndAlso Conn.State = ConnectionState.Open Then Conn.Close()
         End Try
     End Sub
 
