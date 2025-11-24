@@ -182,11 +182,11 @@ Partial Class FormDashboard
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Lucida Sans", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label2.Location = New Point(292, 17)
+        Label2.Location = New Point(185, 17)
         Label2.Name = "Label2"
-        Label2.Size = New Size(160, 34)
+        Label2.Size = New Size(346, 34)
         Label2.TabIndex = 17
-        Label2.Text = "Summary"
+        Label2.Text = "Summary KoperasiKu"
         ' 
         ' lTanggal
         ' 

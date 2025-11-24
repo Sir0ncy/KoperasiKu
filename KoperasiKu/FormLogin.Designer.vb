@@ -77,6 +77,7 @@ Partial Class FormLogin
         ' 
         ' bLogin
         ' 
+        bLogin.BackColor = Color.LightGoldenrodYellow
         bLogin.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bLogin.Location = New Point(109, 292)
         bLogin.Margin = New Padding(3, 4, 3, 4)
@@ -84,18 +85,20 @@ Partial Class FormLogin
         bLogin.Size = New Size(176, 60)
         bLogin.TabIndex = 4
         bLogin.Text = "LOGIN"
-        bLogin.UseVisualStyleBackColor = True
+        bLogin.UseVisualStyleBackColor = False
         ' 
         ' bExit
         ' 
+        bExit.BackColor = Color.MediumVioletRed
         bExit.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        bExit.ForeColor = SystemColors.ButtonHighlight
         bExit.Location = New Point(313, 292)
         bExit.Margin = New Padding(3, 4, 3, 4)
         bExit.Name = "bExit"
         bExit.Size = New Size(176, 60)
         bExit.TabIndex = 5
         bExit.Text = "EXIT"
-        bExit.UseVisualStyleBackColor = True
+        bExit.UseVisualStyleBackColor = False
         ' 
         ' label1
         ' 

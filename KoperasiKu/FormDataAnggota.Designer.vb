@@ -40,7 +40,6 @@ Partial Class FormDataAnggota
         bSimpan = New Button()
         bEdit = New Button()
         bHapus = New Button()
-        bBatal = New Button()
         labelTitle = New Label()
         bBack = New Button()
         bClear = New Button()
@@ -176,28 +175,31 @@ Partial Class FormDataAnggota
         ' 
         ' bSimpan
         ' 
+        bSimpan.BackColor = Color.PowderBlue
         bSimpan.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        bSimpan.Location = New Point(37, 472)
+        bSimpan.Location = New Point(130, 472)
         bSimpan.Margin = New Padding(3, 4, 3, 4)
         bSimpan.Name = "bSimpan"
         bSimpan.Size = New Size(145, 65)
         bSimpan.TabIndex = 14
         bSimpan.Text = "SIMPAN"
-        bSimpan.UseVisualStyleBackColor = True
+        bSimpan.UseVisualStyleBackColor = False
         ' 
         ' bEdit
         ' 
+        bEdit.BackColor = Color.Khaki
         bEdit.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        bEdit.Location = New Point(220, 472)
+        bEdit.Location = New Point(304, 472)
         bEdit.Margin = New Padding(3, 4, 3, 4)
         bEdit.Name = "bEdit"
         bEdit.Size = New Size(145, 65)
         bEdit.TabIndex = 15
         bEdit.Text = "EDIT"
-        bEdit.UseVisualStyleBackColor = True
+        bEdit.UseVisualStyleBackColor = False
         ' 
         ' bHapus
         ' 
+        bHapus.BackColor = Color.HotPink
         bHapus.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         bHapus.Location = New Point(130, 564)
         bHapus.Margin = New Padding(3, 4, 3, 4)
@@ -205,18 +207,7 @@ Partial Class FormDataAnggota
         bHapus.Size = New Size(145, 65)
         bHapus.TabIndex = 16
         bHapus.Text = "HAPUS"
-        bHapus.UseVisualStyleBackColor = True
-        ' 
-        ' bBatal
-        ' 
-        bBatal.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        bBatal.Location = New Point(312, 564)
-        bBatal.Margin = New Padding(3, 4, 3, 4)
-        bBatal.Name = "bBatal"
-        bBatal.Size = New Size(145, 65)
-        bBatal.TabIndex = 17
-        bBatal.Text = "BATAL"
-        bBatal.UseVisualStyleBackColor = True
+        bHapus.UseVisualStyleBackColor = False
         ' 
         ' labelTitle
         ' 
@@ -239,14 +230,15 @@ Partial Class FormDataAnggota
         ' 
         ' bClear
         ' 
+        bClear.BackColor = Color.Azure
         bClear.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        bClear.Location = New Point(399, 472)
+        bClear.Location = New Point(304, 564)
         bClear.Margin = New Padding(3, 4, 3, 4)
         bClear.Name = "bClear"
         bClear.Size = New Size(145, 65)
         bClear.TabIndex = 22
         bClear.Text = "CLEAR"
-        bClear.UseVisualStyleBackColor = True
+        bClear.UseVisualStyleBackColor = False
         ' 
         ' FormDataAnggota
         ' 
@@ -258,7 +250,6 @@ Partial Class FormDataAnggota
         Controls.Add(bCari)
         Controls.Add(tbCari)
         Controls.Add(labelTitle)
-        Controls.Add(bBatal)
         Controls.Add(bHapus)
         Controls.Add(bEdit)
         Controls.Add(bSimpan)
@@ -299,7 +290,6 @@ Partial Class FormDataAnggota
     Friend WithEvents bSimpan As Button
     Friend WithEvents bEdit As Button
     Friend WithEvents bHapus As Button
-    Friend WithEvents bBatal As Button
     Friend WithEvents labelTitle As Label
     Friend WithEvents bBack As Button
     Friend WithEvents bClear As Button

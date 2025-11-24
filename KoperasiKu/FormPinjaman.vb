@@ -183,6 +183,7 @@ Public Class FormPinjaman
 
             Cmd.Parameters.AddWithValue("@id_anggota", selectedAnggotaID)
             Cmd.Parameters.AddWithValue("@jumlah", CleanNumber(tbJumlahPinjaman.Text))
+            Cmd.Parameters.AddWithValue("@tanggal", dtPinjaman.Value.ToString("yyyy-MM-dd"))
             Cmd.Parameters.AddWithValue("@bunga", CleanNumber(tbBunga.Text))
             Cmd.Parameters.AddWithValue("@lama", tbLamaCicilan.Text)
             Cmd.Parameters.AddWithValue("@cicilan", CleanNumber(tbCicilanperBulan.Text))
@@ -193,6 +194,7 @@ Public Class FormPinjaman
             MsgBox("Pinjaman berhasil disimpan!")
 
             LoadPinjaman()
+            Conn.Close()
 
         Catch ex As Exception
             MsgBox("Gagal simpan: " & ex.Message)
@@ -229,6 +231,7 @@ Public Class FormPinjaman
 
             MsgBox("Pinjaman berhasil diupdate!")
             LoadPinjaman()
+            Conn.Close()
 
         Catch ex As Exception
             MsgBox("Gagal update: " & ex.Message)

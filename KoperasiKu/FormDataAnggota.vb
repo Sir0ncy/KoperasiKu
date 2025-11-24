@@ -14,7 +14,6 @@ Public Class FormDataAnggota
 
             Dim query As String =
                 "SELECT id_anggota, nama, alamat, no_hp, tanggal_gabung, simpanan_awal FROM anggota"
-
             Adp = New MySqlDataAdapter(query, Conn)
             Dt = New DataTable
             Adp.Fill(Dt)
@@ -279,4 +278,5 @@ Public Class FormDataAnggota
     Private Sub bClear_Click(sender As Object, e As EventArgs) Handles bClear.Click
         ClearForm()
     End Sub
+
 End Class

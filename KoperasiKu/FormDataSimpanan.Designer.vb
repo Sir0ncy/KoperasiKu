@@ -234,7 +234,7 @@ Partial Class FormDataSimpanan
         ' 
         ' bBatal
         ' 
-        bBatal.BackColor = Color.WhiteSmoke
+        bBatal.BackColor = Color.Azure
         bBatal.Cursor = Cursors.Hand
         bBatal.FlatAppearance.BorderColor = Color.Silver
         bBatal.FlatAppearance.CheckedBackColor = Color.Black
@@ -242,16 +242,16 @@ Partial Class FormDataSimpanan
         bBatal.FlatAppearance.MouseOverBackColor = Color.White
         bBatal.FlatStyle = FlatStyle.Flat
         bBatal.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        bBatal.Location = New Point(558, 150)
+        bBatal.Location = New Point(558, 166)
         bBatal.Name = "bBatal"
         bBatal.Size = New Size(108, 47)
         bBatal.TabIndex = 14
-        bBatal.Text = "Batal"
+        bBatal.Text = "Clear"
         bBatal.UseVisualStyleBackColor = False
         ' 
         ' bHapus
         ' 
-        bHapus.BackColor = Color.WhiteSmoke
+        bHapus.BackColor = Color.HotPink
         bHapus.Cursor = Cursors.Hand
         bHapus.FlatAppearance.BorderColor = Color.Silver
         bHapus.FlatAppearance.CheckedBackColor = Color.Black
@@ -259,7 +259,7 @@ Partial Class FormDataSimpanan
         bHapus.FlatAppearance.MouseOverBackColor = Color.White
         bHapus.FlatStyle = FlatStyle.Flat
         bHapus.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        bHapus.Location = New Point(672, 92)
+        bHapus.Location = New Point(689, 93)
         bHapus.Name = "bHapus"
         bHapus.Size = New Size(108, 47)
         bHapus.TabIndex = 13
@@ -268,7 +268,7 @@ Partial Class FormDataSimpanan
         ' 
         ' bEdit
         ' 
-        bEdit.BackColor = Color.WhiteSmoke
+        bEdit.BackColor = Color.Khaki
         bEdit.Cursor = Cursors.Hand
         bEdit.FlatAppearance.BorderColor = Color.Silver
         bEdit.FlatAppearance.CheckedBackColor = Color.Black
@@ -276,7 +276,7 @@ Partial Class FormDataSimpanan
         bEdit.FlatAppearance.MouseOverBackColor = Color.White
         bEdit.FlatStyle = FlatStyle.Flat
         bEdit.Font = New Font("Lucida Sans", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        bEdit.Location = New Point(672, 150)
+        bEdit.Location = New Point(689, 166)
         bEdit.Name = "bEdit"
         bEdit.Size = New Size(108, 47)
         bEdit.TabIndex = 12
@@ -285,7 +285,7 @@ Partial Class FormDataSimpanan
         ' 
         ' bSimpan
         ' 
-        bSimpan.BackColor = Color.WhiteSmoke
+        bSimpan.BackColor = Color.PowderBlue
         bSimpan.Cursor = Cursors.Hand
         bSimpan.FlatAppearance.BorderColor = Color.Silver
         bSimpan.FlatAppearance.CheckedBackColor = Color.Black

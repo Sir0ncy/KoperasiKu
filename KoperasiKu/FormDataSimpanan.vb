@@ -224,18 +224,12 @@ Public Class FormDataSimpanan
     Private Sub dgvSimpanan_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSimpanan.CellClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = dgvSimpanan.Rows(e.RowIndex)
-
             selectedIDSimpanan = CInt(row.Cells(0).Value)
-
             tbNamaAnggota.Text = row.Cells(1).Value.ToString()
             cbJnsSimpanan.Text = row.Cells(2).Value.ToString()
             dtTanggal.Value = DateTime.Parse(row.Cells(3).Value.ToString())
             tbSimpanan.Text = row.Cells(4).Value.ToString()
         End If
-    End Sub
-
-    Private Sub tbNamaAnggota_TextChanged(sender As Object, e As EventArgs) Handles tbNamaAnggota.TextChanged
-
     End Sub
 
     Private Sub tbNamaAnggota_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNamaAnggota.KeyPress
