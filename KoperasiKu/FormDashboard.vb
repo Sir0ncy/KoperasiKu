@@ -19,9 +19,34 @@ Public Class FormDashboard
                     lTotalAnggota.Text = Cmd.ExecuteScalar().ToString()
                 End Using
 
-                Using Cmd As New MySqlCommand("SELECT IFNULL(SUM(jumlah),0) FROM simpanan", Conn)
-                    lTotalSimpanan.Text = "Rp " & FormatNumber(Cmd.ExecuteScalar(), 0)
+                Dim jumlahData As Integer = 0
+                Using Cmd As New MySqlCommand("SELECT COUNT(*) FROM simpanan", Conn)
+                    jumlahData = Convert.ToInt32(Cmd.ExecuteScalar())
                 End Using
+
+                If jumlahData = 0 Then
+                    lTotalSimpanan.Text = "Rp 0"
+                    Exit Sub
+                End If
+
+                Dim arrSimpanan(jumlahData - 1) As Double
+
+                Dim index As Integer = 0
+                Using Cmd As New MySqlCommand("SELECT jumlah FROM simpanan", Conn)
+                    Using Rd As MySqlDataReader = Cmd.ExecuteReader()
+                        While Rd.Read()
+                            arrSimpanan(index) = Convert.ToDouble(Rd("jumlah"))
+                            index += 1
+                        End While
+                    End Using
+                End Using
+
+                Dim total As Double = 0
+                For i As Integer = 0 To arrSimpanan.Length - 1
+                    total += arrSimpanan(i)
+                Next
+
+                lTotalSimpanan.Text = "Rp " & FormatNumber(total, 0)
 
                 Using Cmd As New MySqlCommand("SELECT COUNT(*) FROM pinjaman WHERE status='aktif'", Conn)
                     lPinjamanAktif.Text = Cmd.ExecuteScalar().ToString()

@@ -266,6 +266,7 @@ Partial Class FormDataAnggota
         Controls.Add(txtNama)
         Margin = New Padding(3, 4, 3, 4)
         Name = "FormDataAnggota"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FormDataAnggota"
         CType(dgvAnggota, ComponentModel.ISupportInitialize).EndInit()
         CType(bindingSource1, ComponentModel.ISupportInitialize).EndInit()

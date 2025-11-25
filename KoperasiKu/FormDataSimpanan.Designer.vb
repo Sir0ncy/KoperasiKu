@@ -327,6 +327,7 @@ Partial Class FormDataSimpanan
         Controls.Add(bBack)
         Controls.Add(panelMain)
         Name = "FormDataSimpanan"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Form Data Simpanan"
         panelMain.ResumeLayout(False)
         panelMain.PerformLayout()

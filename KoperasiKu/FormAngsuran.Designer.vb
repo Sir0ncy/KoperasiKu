@@ -234,6 +234,7 @@ Partial Class FormAngsuran
         Controls.Add(Label2)
         Controls.Add(Label1)
         Name = "FormAngsuran"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FormAngsuran"
         CType(dgvDaftarAngsuran, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

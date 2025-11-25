@@ -237,6 +237,7 @@ Partial Class FormDashboard
         Controls.Add(lTitle)
         Controls.Add(Panel1)
         Name = "FormDashboard"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FormDashboard"
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()

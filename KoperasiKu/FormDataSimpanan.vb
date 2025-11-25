@@ -9,6 +9,7 @@ Public Class FormDataSimpanan
     Dim dr As MySqlDataReader
     Dim ketemu As Boolean
     Dim selectedIDSimpanan As Integer
+    Dim selectedAnggotaID As Integer = -1
 
     Sub LoadDataAnggota()
         Connect()
@@ -31,19 +32,26 @@ Public Class FormDataSimpanan
         Try
             Connect()
 
-            Dim cmd As New MySqlCommand("SELECT id_anggota, nama FROM anggota WHERE nama LIKE @nama LIMIT 1", Conn)
-            Dim dt As New DataTable
+            Dim cmd As New MySqlCommand(
+            "SELECT id_anggota, nama 
+             FROM anggota 
+             WHERE nama LIKE @nama LIMIT 1", Conn)
+
             cmd.Parameters.AddWithValue("@nama", "%" & tbNamaAnggota.Text & "%")
 
             Dim rd = cmd.ExecuteReader()
 
             If rd.Read Then
+                selectedAnggotaID = rd("id_anggota")
                 tbNamaAnggota.Text = rd("nama")
             Else
                 MessageBox.Show("Nama anggota tidak ditemukan!")
+                selectedAnggotaID = -1
             End If
+
             rd.Close()
             Conn.Close()
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
             Conn.Close()
@@ -77,7 +85,7 @@ Public Class FormDataSimpanan
 
             Dim cmd As New MySqlCommand(query, Conn)
 
-            cmd.Parameters.AddWithValue("@id_anggota", tbNamaAnggota.Text)
+            cmd.Parameters.AddWithValue("@id_anggota", selectedAnggotaID)
             cmd.Parameters.AddWithValue("@tanggal", dtTanggal.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@jenis", cbJnsSimpanan.Text)
             cmd.Parameters.AddWithValue("@jumlah", Decimal.Parse(tbSimpanan.Text))
@@ -104,23 +112,28 @@ Public Class FormDataSimpanan
                 Exit Sub
             End If
 
+            If selectedAnggotaID = -1 Then
+                MessageBox.Show("ID Anggota tidak ditemukan!")
+                Exit Sub
+            End If
+
             Connect()
 
             Dim updateQuery As String =
-            "UPDATE simpanan SET 
+        "UPDATE simpanan SET 
             id_anggota = @id_anggota,
             tanggal_simpan = @tanggal,
             jenis_simpanan = @jenis,
             jumlah = @jumlah
-            WHERE id_simpanan = @id"
+         WHERE id_simpanan = @id"
 
             Dim cmd As New MySqlCommand(updateQuery, Conn)
 
-            cmd.Parameters.AddWithValue("@id", selectedIDSimpanan)
-            cmd.Parameters.AddWithValue("@id_anggota", tbNamaAnggota.Text)
+            cmd.Parameters.AddWithValue("@id_anggota", selectedAnggotaID)
             cmd.Parameters.AddWithValue("@tanggal", dtTanggal.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@jenis", cbJnsSimpanan.Text)
             cmd.Parameters.AddWithValue("@jumlah", Decimal.Parse(tbSimpanan.Text))
+            cmd.Parameters.AddWithValue("@id", selectedIDSimpanan) ' ← WAJIB ADA
 
             cmd.ExecuteNonQuery()
             Conn.Close()
@@ -129,8 +142,6 @@ Public Class FormDataSimpanan
 
             LoadDataAnggota()
             HitungTotalSimpanan()
-
-            selectedIDSimpanan = 0
 
             selectedIDSimpanan = 0
             tbNamaAnggota.Clear()
@@ -221,14 +232,41 @@ Public Class FormDataSimpanan
         formDashboard.Show()
     End Sub
 
+    Function GetIDAnggotaByNama(nama As String) As Integer
+        Try
+            Connect()
+
+            Dim cmd As New MySqlCommand(
+            "SELECT id_anggota FROM anggota WHERE nama=@nama LIMIT 1", Conn)
+
+            cmd.Parameters.AddWithValue("@nama", nama)
+
+            Dim result = cmd.ExecuteScalar()
+
+            If result IsNot Nothing Then
+                Return Convert.ToInt32(result)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            If Conn.State = ConnectionState.Open Then Conn.Close()
+        End Try
+
+        Return -1
+    End Function
+
     Private Sub dgvSimpanan_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSimpanan.CellClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = dgvSimpanan.Rows(e.RowIndex)
+
             selectedIDSimpanan = CInt(row.Cells(0).Value)
             tbNamaAnggota.Text = row.Cells(1).Value.ToString()
             cbJnsSimpanan.Text = row.Cells(2).Value.ToString()
             dtTanggal.Value = DateTime.Parse(row.Cells(3).Value.ToString())
             tbSimpanan.Text = row.Cells(4).Value.ToString()
+
+            selectedAnggotaID = GetIDAnggotaByNama(tbNamaAnggota.Text)
         End If
     End Sub
 

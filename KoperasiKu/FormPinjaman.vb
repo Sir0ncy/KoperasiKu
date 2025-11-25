@@ -241,7 +241,51 @@ Public Class FormPinjaman
     End Sub
 
     Private Sub bHapus_Click(sender As Object, e As EventArgs) Handles bHapus.Click
+        If selectedPeminjamanID = -1 Then
+            MsgBox("Pilih data pinjaman dari tabel!")
+            Exit Sub
+        End If
 
+        Dim result = MessageBox.Show(
+            "Yakin ingin menghapus pinjaman ini?",
+            "Konfirmasi Hapus",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning
+        )
+
+        If result = DialogResult.No Then Exit Sub
+
+        Try
+            Connect()
+
+            Dim query As String = "DELETE FROM pinjaman WHERE id_pinjaman=@id"
+
+            Cmd = New MySqlCommand(query, Conn)
+            Cmd.Parameters.AddWithValue("@id", selectedPeminjamanID)
+            Cmd.ExecuteNonQuery()
+
+            MsgBox("Pinjaman berhasil dihapus!")
+
+            Conn.Close()
+
+            LoadPinjaman()
+
+            ' Reset input
+            selectedPeminjamanID = -1
+            tbNamaAnggota.Clear()
+            tbJumlahPinjaman.Clear()
+            tbBunga.Clear()
+            tbLamaCicilan.Clear()
+            tbCicilanperBulan.Clear()
+            tbSisaPinjaman.Clear()
+            lblStatus.Text = ""
+            dtPinjaman.Value = Date.Now
+
+        Catch ex As Exception
+            MsgBox("Gagal menghapus: " & ex.Message)
+        Finally
+            If Conn.State = ConnectionState.Open Then Conn.Close()
+        End Try
     End Sub
 
     Private Sub bClear_Click(sender As Object, e As EventArgs) Handles bClear.Click

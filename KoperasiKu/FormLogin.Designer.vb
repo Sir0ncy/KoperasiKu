@@ -156,6 +156,7 @@ Partial Class FormLogin
         Controls.Add(panel1)
         Margin = New Padding(3, 4, 3, 4)
         Name = "FormLogin"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FormLogin"
         panel1.ResumeLayout(False)
         panel1.PerformLayout()

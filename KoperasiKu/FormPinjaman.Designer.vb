@@ -355,6 +355,7 @@ Partial Class FormPinjaman
         Controls.Add(Label2)
         Controls.Add(Label1)
         Name = "FormPinjaman"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FormPinjaman"
         CType(dgvDaftarPinjam, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
